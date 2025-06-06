@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HR Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Login Section -->
+  <section id="loginSection" class="centered">
+    <h2>Login</h2>
+    <input type="email" id="loginEmail" placeholder="Email" required>
+    <input type="password" id="loginPassword" placeholder="Password" required>
+    <button onclick="login()">Login</button>
+  </section>
+
+  <!-- Dashboard Section -->
+  <section id="dashboardSection" style="display: none;">
+    <header>
+      <h1>HR Management System</h1>
+      <button onclick="logout()">Logout</button>
+    </header>
+
+    <nav>
+      <button onclick="showSection('empForm')">Add Employee</button>
+      <button onclick="showSection('empList')">Employee List</button>
+      <button onclick="showSection('payroll')">Payroll</button>
+      <button onclick="showSection('attendance')">Attendance</button>
+    </nav>
+
+    <!-- Employee Form -->
+    <section id="empForm" class="content-section">
+      <h2>Add Employee</h2>
+      <form onsubmit="addEmployee(event)">
+        <input type="text" id="empName" placeholder="Name" required>
+        <input type="text" id="empRole" placeholder="Role" required>
+        <input type="email" id="empEmail" placeholder="Email" required>
+        <input type="number" id="empSalary" placeholder="Salary" required>
+        <button type="submit">Add</button>
+      </form>
+    </section>
+
+    <!-- Employee List -->
+    <section id="empList" class="content-section" style="display: none;">
+      <h2>Employee List</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th><th>Role</th><th>Email</th><th>Salary</th>
+          </tr>
+        </thead>
+        <tbody id="empTableBody"></tbody>
+      </table>
+    </section>
+
+    <!-- Payroll -->
+    <section id="payroll" class="content-section" style="display: none;">
+      <h2>Payroll</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th><th>Salary</th><th>Deductions</th><th>Net</th>
+          </tr>
+        </thead>
+        <tbody id="payrollBody"></tbody>
+      </table>
+    </section>
+
+    <!-- Attendance -->
+    <section id="attendance" class="content-section" style="display: none;">
+      <h2>Attendance</h2>
+      <form onsubmit="markAttendance(event)">
+        <input type="text" id="attName" placeholder="Name" required>
+        <select id="attStatus" required>
+          <option value="">Select</option>
+          <option value="Present">Present</option>
+          <option value="Absent">Absent</option>
+          <option value="Leave">Leave</option>
+        </select>
+        <input type="date" id="attDate" required>
+        <button type="submit">Submit</button>
+      </form>
+      <table>
+        <thead>
+          <tr><th>Name</th><th>Status</th><th>Date</th></tr>
+        </thead>
+        <tbody id="attTableBody"></tbody>
+      </table>
+    </section>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
